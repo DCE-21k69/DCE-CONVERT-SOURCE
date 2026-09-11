@@ -249,12 +249,12 @@ export default function ImageToPdf({ onBack }) {
           </div>
 
           {/* Images header & add more */}
-          <div className="flex items-center justify-between p-3.5 rounded-xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
-            <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 p-3 sm:p-3.5 rounded-xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+            <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">
               {images.length} {images.length === 1 ? 'imagen lista' : 'imágenes listas'}
             </span>
 
-            <label className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-600 cursor-pointer transition shadow-xs">
+            <label className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-600 cursor-pointer transition shadow-xs active:scale-95">
               <FilePlus2 className="w-3.5 h-3.5 text-blue-500" />
               <span>Añadir más fotos</span>
               <input
@@ -271,7 +271,7 @@ export default function ImageToPdf({ onBack }) {
           </div>
 
           {/* Grid of images */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 p-3 rounded-2xl bg-slate-100/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-2xl bg-slate-100/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800">
             {images.map((img, idx) => {
               const isBeingDragged = draggedIndex === idx;
 
@@ -306,21 +306,22 @@ export default function ImageToPdf({ onBack }) {
                     />
                   </div>
                   <div 
-                    className="p-2 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between text-xs"
+                    className="p-1.5 sm:p-2 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between text-xs"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="flex items-center gap-1">
-                      <GripVertical className="w-3 h-3 text-slate-400" />
+                      <GripVertical className="w-3 h-3 text-slate-400 hidden sm:block" />
                       <span className="font-bold text-slate-700 dark:text-slate-300">
                         #{idx + 1}
                       </span>
                     </div>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-0.5 sm:gap-1">
                       <button
                         type="button"
                         onClick={() => moveImage(idx, -1)}
                         disabled={idx === 0}
-                        className="p-1 rounded text-slate-400 hover:text-slate-800 dark:hover:text-white disabled:opacity-20"
+                        className="p-1.5 sm:p-1 rounded-lg text-slate-400 hover:text-slate-800 dark:hover:text-white disabled:opacity-20 active:scale-95 transition"
+                        title="Mover anterior"
                       >
                         <ArrowLeft className="w-3.5 h-3.5" />
                       </button>
@@ -328,14 +329,16 @@ export default function ImageToPdf({ onBack }) {
                         type="button"
                         onClick={() => moveImage(idx, 1)}
                         disabled={idx === images.length - 1}
-                        className="p-1 rounded text-slate-400 hover:text-slate-800 dark:hover:text-white disabled:opacity-20"
+                        className="p-1.5 sm:p-1 rounded-lg text-slate-400 hover:text-slate-800 dark:hover:text-white disabled:opacity-20 active:scale-95 transition"
+                        title="Mover siguiente"
                       >
                         <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                       <button
                         type="button"
                         onClick={() => removeImage(idx)}
-                        className="p-1 rounded text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 ml-1"
+                        className="p-1.5 sm:p-1 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 active:scale-95 transition ml-0.5"
+                        title="Eliminar foto"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>

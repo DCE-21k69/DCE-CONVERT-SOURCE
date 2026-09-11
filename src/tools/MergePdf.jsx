@@ -187,16 +187,16 @@ export default function MergePdf({ onBack }) {
                       : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
                   }`}
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <GripVertical className="w-4 h-4 text-slate-400 shrink-0" />
-                    <span className="w-7 h-7 rounded-lg bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold text-xs flex items-center justify-center shrink-0">
+                  <div className="flex items-center gap-2.5 min-w-0 flex-1 mr-2">
+                    <GripVertical className="w-4 h-4 text-slate-400 shrink-0 hidden sm:block" />
+                    <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold text-xs flex items-center justify-center shrink-0">
                       {idx + 1}
                     </span>
-                    <div className="min-w-0">
-                      <p className="text-sm font-medium text-slate-800 dark:text-slate-200 truncate">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 truncate">
                         {file.name}
                       </p>
-                      <p className="text-xs text-slate-400">
+                      <p className="text-[10px] sm:text-xs text-slate-400">
                         {formatBytes(file.size)}
                       </p>
                     </div>
@@ -207,7 +207,7 @@ export default function MergePdf({ onBack }) {
                       type="button"
                       onClick={() => moveFile(idx, -1)}
                       disabled={idx === 0}
-                      className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white disabled:opacity-30 disabled:pointer-events-none hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                      className="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white disabled:opacity-20 hover:bg-slate-100 dark:hover:bg-slate-800 active:scale-95 transition"
                       title="Mover arriba"
                     >
                       <ArrowUp className="w-4 h-4" />
@@ -216,7 +216,7 @@ export default function MergePdf({ onBack }) {
                       type="button"
                       onClick={() => moveFile(idx, 1)}
                       disabled={idx === files.length - 1}
-                      className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white disabled:opacity-30 disabled:pointer-events-none hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                      className="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white disabled:opacity-20 hover:bg-slate-100 dark:hover:bg-slate-800 active:scale-95 transition"
                       title="Mover abajo"
                     >
                       <ArrowDown className="w-4 h-4" />
@@ -224,7 +224,7 @@ export default function MergePdf({ onBack }) {
                     <button
                       type="button"
                       onClick={() => removeFile(idx)}
-                      className="p-1.5 rounded-lg text-red-500 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950/40 transition ml-1"
+                      className="p-2 rounded-lg text-red-500 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950/40 active:scale-95 transition ml-0.5"
                       title="Eliminar de la lista"
                     >
                       <Trash2 className="w-4 h-4" />

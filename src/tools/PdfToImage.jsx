@@ -238,7 +238,7 @@ export default function PdfToImage({ onBack }) {
           {images.length > 0 && (
             <div className="space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800">
-                <div className="flex-1 max-w-xs">
+                <div className="w-full sm:max-w-xs">
                   <DownloadFilenameInput
                     value={customFilename}
                     onChange={setCustomFilename}
@@ -250,7 +250,7 @@ export default function PdfToImage({ onBack }) {
                 <button
                   type="button"
                   onClick={downloadAllZip}
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md shadow-emerald-600/20 active:scale-95 transition cursor-pointer shrink-0"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md shadow-emerald-600/20 active:scale-95 transition cursor-pointer shrink-0"
                 >
                   <Archive className="w-4 h-4" />
                   <span>Descargar Todo en ZIP</span>
@@ -258,7 +258,7 @@ export default function PdfToImage({ onBack }) {
               </div>
 
               {/* Grid of images */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
                 {images.map((img) => (
                   <div
                     key={img.pageNumber}

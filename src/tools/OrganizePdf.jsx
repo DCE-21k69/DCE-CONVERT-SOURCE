@@ -200,7 +200,7 @@ export default function OrganizePdf({ onBack }) {
           </div>
 
           {/* Thumbnails grid with Drag & Drop */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4 rounded-2xl bg-slate-100/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-slate-100/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800">
             {pages.map((p, idx) => {
               const isBeingDragged = draggedIndex === idx;
 
@@ -230,18 +230,18 @@ export default function OrganizePdf({ onBack }) {
                   {/* Header with index badge and drag handle */}
                   <div className="flex items-center justify-between px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/90 border-b border-slate-100 dark:border-slate-700 text-xs">
                     <div className="flex items-center gap-1">
-                      <GripVertical className="w-3.5 h-3.5 text-slate-400 group-hover:text-violet-500 transition" />
+                      <GripVertical className="w-3.5 h-3.5 text-slate-400 group-hover:text-violet-500 transition hidden sm:block" />
                       <span className="font-bold text-slate-700 dark:text-slate-300">
                         Pág. {idx + 1}
                       </span>
                     </div>
                     <span className="text-[10px] text-slate-400">
-                      (Orig: {p.pageNumber})
+                      ({p.pageNumber})
                     </span>
                   </div>
 
                   {/* Page preview with rotation */}
-                  <div className="aspect-[3/4] p-3 flex items-center justify-center bg-slate-50/50 dark:bg-slate-950/40 overflow-hidden pointer-events-none">
+                  <div className="aspect-[3/4] p-2 sm:p-3 flex items-center justify-center bg-slate-50/50 dark:bg-slate-950/40 overflow-hidden pointer-events-none">
                     <div
                       style={{
                         transform: `rotate(${p.rotation}deg)`,
@@ -252,21 +252,21 @@ export default function OrganizePdf({ onBack }) {
                       <img
                         src={p.dataUrl}
                         alt={`Página ${p.pageNumber}`}
-                        className="max-h-48 object-contain rounded shadow-xs pointer-events-none"
+                        className="max-h-40 sm:max-h-48 object-contain rounded shadow-xs pointer-events-none"
                       />
                     </div>
                   </div>
 
-                  {/* Individual controls */}
+                  {/* Individual touch-friendly controls */}
                   <div 
-                    className="p-1.5 bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between gap-1"
+                    className="p-1 sm:p-1.5 bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between gap-0.5 sm:gap-1"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <button
                       type="button"
                       onClick={() => movePage(idx, -1)}
                       disabled={idx === 0}
-                      className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white disabled:opacity-20 hover:bg-slate-100 dark:hover:bg-slate-700 transition"
+                      className="p-2 sm:p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white disabled:opacity-20 hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-95 transition"
                       title="Mover a la izquierda"
                     >
                       <ArrowLeft className="w-3.5 h-3.5" />
@@ -275,7 +275,7 @@ export default function OrganizePdf({ onBack }) {
                     <button
                       type="button"
                       onClick={() => rotatePage(idx)}
-                      className="p-1.5 rounded-lg text-violet-600 dark:text-violet-400 hover:bg-violet-50 dark:hover:bg-violet-950/40 transition"
+                      className="p-2 sm:p-1.5 rounded-lg text-violet-600 dark:text-violet-400 hover:bg-violet-50 dark:hover:bg-violet-950/40 active:scale-95 transition"
                       title="Girar 90° a la derecha"
                     >
                       <RotateCw className="w-3.5 h-3.5" />
@@ -284,7 +284,7 @@ export default function OrganizePdf({ onBack }) {
                     <button
                       type="button"
                       onClick={() => removePage(idx)}
-                      className="p-1.5 rounded-lg text-red-500 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950/40 transition"
+                      className="p-2 sm:p-1.5 rounded-lg text-red-500 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950/40 active:scale-95 transition"
                       title="Eliminar página"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
@@ -294,7 +294,7 @@ export default function OrganizePdf({ onBack }) {
                       type="button"
                       onClick={() => movePage(idx, 1)}
                       disabled={idx === pages.length - 1}
-                      className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white disabled:opacity-20 hover:bg-slate-100 dark:hover:bg-slate-700 transition"
+                      className="p-2 sm:p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white disabled:opacity-20 hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-95 transition"
                       title="Mover a la derecha"
                     >
                       <ArrowRight className="w-3.5 h-3.5" />
